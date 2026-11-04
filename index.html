@@ -4,28 +4,78 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Planificador de tareas</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
   </head>
   <body>
-    <header>
-      <h1>Lista de tareas</h1>
+    <header class="bg-primary py-4 text-white">
+      <div class="container">
+        <h1 class="mb-0">Lista de tareas</h1>
+      </div>
     </header>
 
-    <main class="container">
+    <main class="container py-4">
       <div class="row">
-        <section class="col-md-5 border p-3" aria-labelledby="form-title">
+        <section class="col-4 border p-3" aria-labelledby="form-title">
           <h2 id="form-title" class="text-center">Registrar nueva tarea</h2>
           <form></form>
         </section>
 
-        <section class="col-md-6 border p-3" aria-labelledby="tasks-title">
-          <h2 id="tasks-title" class="text-center">Lista de tareas</h2>
-          <ul></ul>
+        <section class="col-8" aria-labelledby="tasks-title">
+          <h2 id="tasks-title" class="mb-4">Lista de tareas</h2>
+          <div class="row g-3">
+              <div class="col-12 col-md-6 col-lg-4">
+                <article class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title h5">Preparar presentación del proyecto</h3>
+                    <p class="card-text">Organizar las ideas y crear las diapositivas para la exposición.</p>
+                    <p class="card-text"><strong>Fecha:</strong> <time datetime="2026-11-05">5 de noviembre de 2026</time></p>
+                    <p class="mb-0"><strong>Estado:</strong> <span class="badge text-bg-warning">Pendiente</span></p>
+                  </div>
+                </article>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <article class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title h5">Revisar presupuesto mensual</h3>
+                    <p class="card-text">Comparar los gastos del mes con el presupuesto planificado.</p>
+                    <p class="card-text"><strong>Fecha:</strong> <time datetime="2026-11-06">6 de noviembre de 2026</time></p>
+                    <p class="mb-0"><strong>Estado:</strong> <span class="badge text-bg-primary">En progreso</span></p>
+                  </div>
+                </article>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <article class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title h5">Enviar informe semanal</h3>
+                    <p class="card-text">Terminar el resumen de avances y compartirlo con el equipo.</p>
+                    <p class="card-text"><strong>Fecha:</strong> <time datetime="2026-11-02">2 de noviembre de 2026</time></p>
+                    <p class="mb-0"><strong>Estado:</strong> <span class="badge text-bg-success">Completada</span></p>
+                  </div>
+                </article>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <article class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title h5">Organizar materiales de estudio</h3>
+                    <p class="card-text">Ordenar apuntes y recursos para la próxima evaluación.</p>
+                    <p class="card-text"><strong>Fecha:</strong> <time datetime="2026-11-08">8 de noviembre de 2026</time></p>
+                    <p class="mb-0"><strong>Estado:</strong> <span class="badge text-bg-warning">Pendiente</span></p>
+                  </div>
+                </article>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <article class="card h-100">
+                  <div class="card-body">
+                    <h3 class="card-title h5">Agendar revisión con el equipo</h3>
+                    <p class="card-text">Coordinar una reunión para revisar los próximos pasos.</p>
+                    <p class="card-text"><strong>Fecha:</strong> <time datetime="2026-11-10">10 de noviembre de 2026</time></p>
+                    <p class="mb-0"><strong>Estado:</strong> <span class="badge text-bg-primary">En progreso</span></p>
+                  </div>
+                </article>
+              </div>
+          </div>
         </section>
       </div>
     </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
