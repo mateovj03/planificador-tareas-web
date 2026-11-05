@@ -15,9 +15,36 @@
 
     <main class="container py-4">
       <div class="row">
-        <section class="col-4 border p-3" aria-labelledby="form-title">
+        <section class="col-4 align-self-start border p-3" aria-labelledby="form-title">
           <h2 id="form-title" class="text-center">Registrar nueva tarea</h2>
-          <form></form>
+          <form id="task-form" novalidate>
+            <div class="mb-3">
+              <label for="task-name" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="task-name" name="name" aria-describedby="task-name-error" required>
+              <div id="task-name-error" class="invalid-feedback" aria-live="polite"></div>
+            </div>
+            <div class="mb-3">
+              <label for="task-description" class="form-label">Descripción</label>
+              <textarea class="form-control" id="task-description" name="description" rows="3" aria-describedby="task-description-error" required></textarea>
+              <div id="task-description-error" class="invalid-feedback" aria-live="polite"></div>
+            </div>
+            <div class="mb-3">
+              <label for="task-due-date" class="form-label">Fecha de entrega</label>
+              <input type="date" class="form-control" id="task-due-date" name="dueDate" aria-describedby="task-due-date-error" required>
+              <div id="task-due-date-error" class="invalid-feedback" aria-live="polite"></div>
+            </div>
+            <div class="mb-3">
+              <label for="task-status" class="form-label">Estado</label>
+              <select class="form-select" id="task-status" name="status" aria-describedby="task-status-error" required>
+                <option value="" selected disabled>Selecciona un estado</option>
+                <option value="pendiente">Pendiente</option>
+                <option value="en-progreso">En progreso</option>
+                <option value="completada">Completada</option>
+              </select>
+              <div id="task-status-error" class="invalid-feedback" aria-live="polite"></div>
+            </div>
+            <button type="submit" class="btn">Agregar tarea</button>
+          </form>
         </section>
 
         <section class="col-8" aria-labelledby="tasks-title">
@@ -77,5 +104,6 @@
         </section>
       </div>
     </main>
+    <script src="app.js" defer></script>
   </body>
 </html>
