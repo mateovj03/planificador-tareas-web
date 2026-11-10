@@ -49,14 +49,15 @@
 
         <section class="col-8" aria-labelledby="tasks-title">
           <h2 id="tasks-title" class="mb-4">Lista de tareas</h2>
-          <div class="row g-3">
+          <div id="task-list" class="row g-3">
               <div class="col-12 col-md-6 col-lg-4">
                 <article class="card h-100">
                   <div class="card-body">
                     <h3 class="card-title h5">Preparar presentación del proyecto</h3>
                     <p class="card-text">Organizar las ideas y crear las diapositivas para la exposición.</p>
                     <p class="card-text"><strong>Fecha:</strong> <time datetime="2026-11-05">5 de noviembre de 2026</time></p>
-                    <p class="mb-0"><strong>Estado:</strong> <span class="badge text-bg-warning">Pendiente</span></p>
+                    <p class="mb-3"><strong>Estado:</strong> <span class="badge text-bg-warning">Pendiente</span></p>
+                    <button type="button" class="btn btn-outline-success task-status-toggle" aria-pressed="false">Marcar como completada</button>
                   </div>
                 </article>
               </div>
@@ -66,7 +67,8 @@
                     <h3 class="card-title h5">Revisar presupuesto mensual</h3>
                     <p class="card-text">Comparar los gastos del mes con el presupuesto planificado.</p>
                     <p class="card-text"><strong>Fecha:</strong> <time datetime="2026-11-06">6 de noviembre de 2026</time></p>
-                    <p class="mb-0"><strong>Estado:</strong> <span class="badge text-bg-primary">En progreso</span></p>
+                    <p class="mb-3"><strong>Estado:</strong> <span class="badge text-bg-primary">En progreso</span></p>
+                    <button type="button" class="btn btn-outline-success task-status-toggle" aria-pressed="false">Marcar como completada</button>
                   </div>
                 </article>
               </div>
@@ -76,7 +78,8 @@
                     <h3 class="card-title h5">Enviar informe semanal</h3>
                     <p class="card-text">Terminar el resumen de avances y compartirlo con el equipo.</p>
                     <p class="card-text"><strong>Fecha:</strong> <time datetime="2026-11-02">2 de noviembre de 2026</time></p>
-                    <p class="mb-0"><strong>Estado:</strong> <span class="badge text-bg-success">Completada</span></p>
+                    <p class="mb-3"><strong>Estado:</strong> <span class="badge text-bg-success">Completada</span></p>
+                    <button type="button" class="btn btn-outline-secondary task-status-toggle" aria-pressed="true">Marcar como pendiente</button>
                   </div>
                 </article>
               </div>
@@ -86,7 +89,8 @@
                     <h3 class="card-title h5">Organizar materiales de estudio</h3>
                     <p class="card-text">Ordenar apuntes y recursos para la próxima evaluación.</p>
                     <p class="card-text"><strong>Fecha:</strong> <time datetime="2026-11-08">8 de noviembre de 2026</time></p>
-                    <p class="mb-0"><strong>Estado:</strong> <span class="badge text-bg-warning">Pendiente</span></p>
+                    <p class="mb-3"><strong>Estado:</strong> <span class="badge text-bg-warning">Pendiente</span></p>
+                    <button type="button" class="btn btn-outline-success task-status-toggle" aria-pressed="false">Marcar como completada</button>
                   </div>
                 </article>
               </div>
@@ -96,7 +100,8 @@
                     <h3 class="card-title h5">Agendar revisión con el equipo</h3>
                     <p class="card-text">Coordinar una reunión para revisar los próximos pasos.</p>
                     <p class="card-text"><strong>Fecha:</strong> <time datetime="2026-11-10">10 de noviembre de 2026</time></p>
-                    <p class="mb-0"><strong>Estado:</strong> <span class="badge text-bg-primary">En progreso</span></p>
+                    <p class="mb-3"><strong>Estado:</strong> <span class="badge text-bg-primary">En progreso</span></p>
+                    <button type="button" class="btn btn-outline-success task-status-toggle" aria-pressed="false">Marcar como completada</button>
                   </div>
                 </article>
               </div>
@@ -104,6 +109,7 @@
         </section>
       </div>
     </main>
-    <script src="app.js" defer></script>
+    <script src="js/taskManager.js" defer></script>
+    <script src="js/index.js" defer></script>
   </body>
 </html>

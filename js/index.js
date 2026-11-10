@@ -1,45 +1,46 @@
-function validFormFieldInput(datos) {
+function validarCamposFormulario(datos) {
   if (datos === null || typeof datos !== "object") {
     return false;
   }
 
   const errores = obtenerErroresFormulario(datos);
 
-  return (!errores.name && !errores.description && !errores.dueDate && !errores.status);
+  return (!errores.nombre && !errores.descripcion && !errores.fechaEntrega && !errores.estado);
 }
 
 function obtenerErroresFormulario(datos) {
   const errores = {};
-  const nombre = datos.name;
-  const descripcion = datos.description;
-  const fechaEntrega = datos.dueDate;
-  const estado = datos.status;
+  const nombre = datos.nombre;
+  const descripcion = datos.descripcion;
+  const fechaEntrega = datos.fechaEntrega;
+  const estado = datos.estado;
 
   if (typeof nombre !== "string" || nombre.trim() === "") {
-    errores.name = "Ingresa el nombre de la tarea";
+    errores.nombre = "Ingresa el nombre de la tarea";
   }
   if (typeof descripcion !== "string" || descripcion.trim() === "") {
-    errores.description = "Ingresa la descripción de la tarea";
+    errores.descripcion = "Ingresa la descripción de la tarea";
   }
 
   if (typeof fechaEntrega !== "string" || fechaEntrega === "") {
-    errores.dueDate = "Selecciona una fecha de entrega válida";
+    errores.fechaEntrega = "Selecciona una fecha de entrega válida";
   }
 
   if (  typeof estado !== "string" || !["pendiente", "en-progreso", "completada"].includes(estado)) {
-    errores.status = "Selecciona un estado";
+    errores.estado = "Selecciona un estado";
   }
 
   return errores;
 }
 
 const formularioTarea = document.querySelector("#task-form");
+const listaTareas = document.querySelector("#task-list");
 
 function enviarFormulario(evento) {
   evento.preventDefault();
 
-  const newTaskNameInput = document.querySelector("#task-name");
-  const name = newTaskNameInput.value;
+  const entradaNombreTarea = document.querySelector("#task-name");
+  const nombre = entradaNombreTarea.value;
   const entradaDescripcion = document.querySelector("#task-description");
   const descripcion = entradaDescripcion.value;
   const entradaFechaEntrega = document.querySelector("#task-due-date");
@@ -48,36 +49,36 @@ function enviarFormulario(evento) {
   const estado = entradaEstado.value;
 
   const datos = {
-    name,
-    description: descripcion,
-    dueDate: fechaEntrega,
-    status: estado,
+    nombre,
+    descripcion,
+    fechaEntrega,
+    estado,
   };
 
-  console.log("name: " + name);
-  console.log("description: " + descripcion);
-  console.log("due date: " + fechaEntrega);
-  console.log("status: " + estado);
+  console.log("nombre: " + nombre);
+  console.log("descripción: " + descripcion);
+  console.log("fecha de entrega: " + fechaEntrega);
+  console.log("estado: " + estado);
 
-  const formularioValido = validFormFieldInput(datos);
+  const formularioValido = validarCamposFormulario(datos);
   let errores = {};
   if (!formularioValido) {
     errores = obtenerErroresFormulario(datos);
   }
   const campos = {
-    name: {
-      input: newTaskNameInput,
+    nombre: {
+      input: entradaNombreTarea,
       feedback: document.querySelector("#task-name-error"),
     },
-    description: {
+    descripcion: {
       input: entradaDescripcion,
       feedback: document.querySelector("#task-description-error"),
     },
-    dueDate: {
+    fechaEntrega: {
       input: entradaFechaEntrega,
       feedback: document.querySelector("#task-due-date-error"),
     },
-    status: {
+    estado: {
       input: entradaEstado,
       feedback: document.querySelector("#task-status-error"),
     },
@@ -99,3 +100,18 @@ function enviarFormulario(evento) {
 }
 
 formularioTarea.addEventListener("submit", enviarFormulario);
+
+const taskManager = new TaskManager();
+taskManager.inicializarTarjetas(listaTareas);
+
+console.log(taskManager.tasks);
+
+listaTareas.addEventListener("click", (evento) => {
+  const boton = evento.target.closest(".task-status-toggle");
+  if (!boton || !listaTareas.contains(boton)) {
+    return;
+  }
+
+  const tarjeta = boton.closest(".card");
+  taskManager.cambiarEstadoTask(tarjeta);
+});
