@@ -97,16 +97,38 @@ function enviarFormulario(evento) {
       campo.input.setAttribute("aria-invalid", "false");
     }
   });
+
+  if (!formularioValido) {
+    return;
+  }
+
+  taskManager.addTask(nombre, descripcion, fechaEntrega, estado);
+  taskManager.save();
+  taskManager.render();
+  formularioTarea.reset();
 }
 
 formularioTarea.addEventListener("submit", enviarFormulario);
 
 const taskManager = new TaskManager();
-taskManager.inicializarTarjetas(listaTareas);
-
-console.log(taskManager.tasks);
+if (!taskManager.load()) {
+  taskManager.inicializarTarjetas(listaTareas);
+  taskManager.save();
+}
+taskManager.listaTareas = listaTareas;
+taskManager.render();
 
 listaTareas.addEventListener("click", (evento) => {
+  const botonEliminar = evento.target.closest(".delete-button");
+  if (botonEliminar) {
+    const tareaPadre = botonEliminar.closest("[data-task-id]");
+    const taskId = Number(tareaPadre.dataset.taskId);
+    taskManager.deleteTask(taskId);
+    taskManager.save();
+    taskManager.render();
+    return;
+  }
+
   const boton = evento.target.closest(".task-status-toggle");
   if (!boton || !listaTareas.contains(boton)) {
     return;
@@ -114,4 +136,6 @@ listaTareas.addEventListener("click", (evento) => {
 
   const tarjeta = boton.closest(".card");
   taskManager.cambiarEstadoTask(tarjeta);
+  taskManager.save();
+  taskManager.render();
 });
